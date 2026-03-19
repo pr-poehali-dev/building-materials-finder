@@ -1,0 +1,52 @@
+{
+  "tests": [
+    {
+      "name": "Get all products",
+      "method": "GET",
+      "path": "/?action=products",
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get districts",
+      "method": "GET",
+      "path": "/?action=districts",
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get categories",
+      "method": "GET",
+      "path": "/?action=categories",
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Search products",
+      "method": "GET",
+      "path": "/?action=products&search=кирпич",
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Filter by in_stock",
+      "method": "GET",
+      "path": "/?action=products&in_stock=true",
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Map districts",
+      "method": "GET",
+      "path": "/?action=map_districts",
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
