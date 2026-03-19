@@ -1,5 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import Icon from "@/components/ui/icon";
+import YandexAd from "@/components/YandexAd";
+
+// Замените на ваш реальный ID блока из кабинета Яндекс Партнёра
+const RSY_BLOCK_ID = "R-A-XXXXXXX-1";
 
 const API_URL = "https://functions.poehali.dev/b2d61419-950a-4c95-a0ae-7d90f686d708";
 
@@ -228,6 +232,9 @@ export default function Index() {
               </div>
             </div>
 
+            {/* Ad block — after categories */}
+            <YandexAd blockId={RSY_BLOCK_ID} />
+
             {/* Popular products */}
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -381,8 +388,13 @@ export default function Index() {
               </div>
             ) : (
               <div className="space-y-3">
-                {products.map(p => (
-                  <ProductCard key={p.id} product={p} isFav={favorites.includes(p.id)} onToggleFav={toggleFavorite} />
+                {products.map((p, i) => (
+                  <>
+                    <ProductCard key={p.id} product={p} isFav={favorites.includes(p.id)} onToggleFav={toggleFavorite} />
+                    {(i + 1) % 5 === 0 && i < products.length - 1 && (
+                      <YandexAd key={`ad-${i}`} blockId={RSY_BLOCK_ID} className="my-1" />
+                    )}
+                  </>
                 ))}
               </div>
             )}
