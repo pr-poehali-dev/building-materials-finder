@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Auth check - no token returns 401",
+      "method": "GET",
+      "path": "/?action=get_stats",
+      "expectedStatus": 401,
+      "expectedBody": {"success": false},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
